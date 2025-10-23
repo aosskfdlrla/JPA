@@ -76,8 +76,8 @@ public class PersistenceContextMain {
 
             // 변경감지 - persist 또는 조회해서 1차 캐시에 등록되었을 순간의 값과 나중에 달라진 값을 다 비교해서 달라진 값을 Update 쿼리 날림
             member3.setName("OldMember");
-            System.out.println("===== AFTER =====");
             System.out.println("쿼리 실행 없고 SQL 저장소에 저장");
+            System.out.println("===== AFTER =====");
 
             tx.commit(); // 한번에 쿼리 실행
         } catch (Exception e) {
