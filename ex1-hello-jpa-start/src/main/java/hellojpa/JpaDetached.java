@@ -35,7 +35,7 @@ public class JpaDetached {
             System.out.println("member2" + member2.getName());
             System.out.println("=========================");
 
-            // 제외 했음으로 아무런 일이 일어나지 않는다.
+            // 제외 했음으로 아무런 일이 일어나지 않는다..
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
