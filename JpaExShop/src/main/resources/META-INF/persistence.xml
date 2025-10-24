@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+    <persistence-unit name="jpaShop">
+        <properties>
+            <!-- 필수 속성 -->
+            <property name="jakarta.persistence.jdbc.driver" value="org.h2.Driver"/>
+            <property name="jakarta.persistence.jdbc.user" value="sa"/>
+            <property name="jakarta.persistence.jdbc.password" value="12"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/jpashop"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+
+            <!-- 옵션 -->
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.use_sql_comments"  value="true"/>
+            <property name="hibernate.hbm2ddl.auto" value="create" />
+            <!-- hibernate.hbm2ddl.auto 속성
+                 1) value = create : 기존 테이블 삭제 후 다시 생성( DROP + CREATE)
+                 2) value = create-drop : create와 같으나 종료시점에 Table DROP
+                 3) value = update : 변경분만 반영 (운영 DB에선 사용 안함)
+                 4) value = validate : 엔티티와 테이블이 정상 매칭되었는지만 확인
+                 5) none -> 사용하지 않음.
+                 주의!!
+                 운영서버에서는 create, create-drop, update 사용하면 안된다.
+                 테스트 서버에서는 update, validate
+                 초기 개발단계 create, update 정도
+             -->
+        </properties>
+    </persistence-unit>
+
+</persistence>

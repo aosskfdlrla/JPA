@@ -1,6 +1,7 @@
 package JpaEntityMapping.Entity;
 
 import jakarta.persistence.*;
+import org.hibernate.sql.results.graph.embeddable.internal.AggregateEmbeddableResultImpl;
 
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -14,10 +15,30 @@ import java.util.Date;
  * 5) "@Transient": 특정 필드를 컬럼에 매핑하지 않음 (매핑 무시)
  */
 @Entity
-@Table(name = "Member")
+@Table(name = "MappingMember")
+// 시퀀스 설정
+//@SequenceGenerator(
+//        name = "MappingMemberSeq",
+//        sequenceName = "member_seq",
+//        initialValue = 1, allocationSize = 1)
+// 테이블 설정
+//@TableGenerator(
+//        name = "MEMBER_SEQ_GENERATOR",
+//        table = "MY_SEQUENCE",
+//        pkColumnName = "MEMBER_SEQ", allocationSize = 1)
 public class MappingMember {
 
+    // 기본키 매핑 어노테이션
+    // "@GeneratedValue": 기본키 자동 생성
+    // 속성
+    // 1) IDENTITY : 데이터베이스에 위임
+    // 2) SEQUENCE : 데이터베이스 시퀀스 오브젝트 사용
+    // -> @SequenceGenerator로 이름과 사이즈를 직접 설정해줄 수 있다.
+    // 3) TABLE : 키 생성용 테이블 사용
+    // 4) AUTO : DB에 따라 자동 지정, 기본값으로 지정됨.
     @Id
+    //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "MappingMemberSeq")
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // IDENTITY에선 DB에 넣어봐야 기본값을 알 수있다.
     private Long Id;
 
     // "@Column" 속성
